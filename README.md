@@ -1,6 +1,6 @@
 # Apache2 Webserver
 
-[![Build Status](https://travis-ci.org/rroethof/ansible-apache2.svg)](https://travis-ci.org/rroethof/ansible-apache2)
+[![Build Status](https://travis-ci.org/rroethof/ansible-role-apache2.svg?branch=master)](https://travis-ci.org/rroethof/ansible-role-apache2)
 
 Basic feature list:
 

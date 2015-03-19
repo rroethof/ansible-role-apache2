@@ -1,0 +1,11 @@
+---
+# defaults file for ansible-apache2
+webserver: apache2
+webserver_vhosts:
+  - servername: "vhost1.example.com"
+    serveralias: "alias1.example.com"
+    serveradmin: "admin@example.com"
+    documentrootdir: "/var/www/vhost1.example.com"
+    errorlog: "/var/log/httpd/vhost1.example.com"
+    customlog: "/var/log/httpd/vhost1.example.com"
+    directoryoptions: +Indexes

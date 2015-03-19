@@ -1,0 +1,9 @@
+---
+# Apache2 server opzetten
+
+- name: Installeer de apache2 webserver (RedHat)
+  yum:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - httpd

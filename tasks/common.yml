@@ -1,0 +1,21 @@
+---
+  - name: Create web directories for each enabled VirtualHost
+    file:
+      path={{ item.documentrootdir }}
+      state=directory
+      owner=www-data
+      group=www-data
+      mode=0755
+    with_items: webserver_vhosts
+
+  - name: Create a VirtualHost file for each enabled VirtualHost
+    template:
+      src=vhost.conf.j2
+      dest={{ apache_conf_path }}/{{ item.servername }}.conf
+      owner=root
+      group=root
+      mode=0644
+    with_items: webserver_vhosts
+#    notify:
+#      - restart httpd
+

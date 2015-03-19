@@ -1,0 +1,22 @@
+---
+# tasks file for ansible-apache2
+
+# Include variables and define needed variables.
+- name: Include OS-specific variables.
+  include_vars: "{{ ansible_os_family }}.yml"
+  when: webserver == "apache2"
+
+- include: Debian.yml
+  when: ansible_os_family == "Debian" and webserver == "apache2"
+
+- include: RedHat.yml
+  when: ansible_os_family == "RedHat" and webserver == "apache2"
+
+- include: common.yml
+  when: webserver == "apache2"
+
+- name: Ensure Apache is started and enabled on boot.
+  service:
+    name: "{{ apache_daemon }}"
+    state: started
+    enabled: yes

@@ -1,0 +1,9 @@
+---
+# Apache2 webserver opzetten
+
+- name: Installeer de apache2 webserver (Debian)
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - apache2

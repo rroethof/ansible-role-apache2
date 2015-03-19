@@ -1,0 +1,34 @@
+#{{ ansible_managed }}
+
+<VirtualHost *:80>
+    ServerName {{ item.servername }}
+{% if item.serveralias is defined %}
+    ServerAlias {{ item.serveralias }}
+{% endif %}
+    DocumentRoot {{ item.documentrootdir }}
+{% if item.serveradmin is defined %}
+    ServerAdmin {{ item.serveradmin }}
+{% endif %}
+{% if item.errorlog is defined %}
+    ErrorLog logs/{{ item.errorlog }}-error_log
+{% endif %}
+{% if item.customlog is defined %}
+    CustomLog logs/{{ item.customlog }}-access_log common
+{% endif %}
+    <Directory {{ item.documentrootdir }}>
+{% if item.directoryoptions is defined %}
+        Options {{ item.directoryoptions }}
+{% else %}
+        Options None
+{% endif %}
+{% if item.allowfrom is defined %}
+        Allow from {{ item.allowfrom }}
+{% endif %}
+{% if item.denyfrom is defined %}
+        Deny from {{ item.denyfrom }}
+{% endif %}
+    </Directory>
+{% if item.directoryindex is defined %}
+    DirectoryIndex {{ item.directoryindex }}
+{% endif %}
+</VirtualHost>
